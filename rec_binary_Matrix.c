@@ -1,19 +1,23 @@
-#include <stdio.h>
+#include "head.h"
 
 int isBinaryMatrixRecursive(int matrix[100][100], int rows, int cols, int currentRow, int currentCol) {
     if (currentRow == rows) {
-        return 1; // Base case: all elements have been checked and are binary
+        return 1;
     }
 
     if (currentCol == cols) {
         return isBinaryMatrixRecursive(matrix, rows, cols, currentRow + 1, 0);
     }
 
-    if (matrix[currentRow][currentCol] != 0 && matrix[currentRow][currentCol] != 1) {
-        return 0; // Not a binary matrix
-    }
+    int currentElement = matrix[currentRow][currentCol];
 
-    return isBinaryMatrixRecursive(matrix, rows, cols, currentRow, currentCol + 1);
+    if (currentElement != 0 && currentElement != 1) {
+        return 0;
+    } else if (currentCol == cols - 1) {
+        return isBinaryMatrixRecursive(matrix, rows, cols, currentRow + 1, 0);
+    } else {
+        return isBinaryMatrixRecursive(matrix, rows, cols, currentRow, currentCol + 1);
+    }
 }
 
 int main() {
@@ -27,7 +31,7 @@ int main() {
 
     int matrix[100][100];
 
-    // Input matrix elements
+
     printf("Enter the matrix elements:\n");
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {

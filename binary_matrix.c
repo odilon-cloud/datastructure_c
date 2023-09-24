@@ -1,14 +1,14 @@
-#include <stdio.h>
+#include "head.h"
 
 int isBinaryMatrix(int matrix[100][100], int rows, int cols) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             if (matrix[i][j] != 0 && matrix[i][j] != 1) {
-                return 0; // Not a binary matrix
+                return 0;
             }
         }
     }
-    return 1; // Binary matrix
+    return 1;
 }
 
 int main() {

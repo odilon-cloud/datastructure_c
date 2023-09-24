@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "head.h"
 
 int findMaxRecursive(int matrix[][100], int rows, int cols, int currentRow, int currentCol, int currentMax) {
     if (currentRow == rows) {
@@ -9,8 +9,10 @@ int findMaxRecursive(int matrix[][100], int rows, int cols, int currentRow, int 
         return findMaxRecursive(matrix, rows, cols, currentRow + 1, 0, currentMax);
     }
 
-    if (matrix[currentRow][currentCol] > currentMax) {
-        return findMaxRecursive(matrix, rows, cols, currentRow, currentCol + 1, matrix[currentRow][currentCol]);
+    int currentElement = matrix[currentRow][currentCol];
+
+    if (currentElement > currentMax) {
+        return findMaxRecursive(matrix, rows, cols, currentRow, currentCol + 1, currentElement);
     } else {
         return findMaxRecursive(matrix, rows, cols, currentRow, currentCol + 1, currentMax);
     }
@@ -27,6 +29,7 @@ int main() {
 
     int matrix[100][100];
 
+    // Input matrix elements
     printf("Enter the matrix elements:\n");
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -38,14 +41,5 @@ int main() {
 
     printf("Maximum element: %d\n", maxElement);
 
-    char response;
-
-    printf("Do you want to exit (Y/N): ");
-    scanf(" %c", &response);
-
-    if (response == 'Y' || response == 'y') {
-        return 0;
-    } else {
-        return main();
-    }
+    return 0;
 }
