@@ -22,7 +22,7 @@ int main() {
 
     int matrix[100][100];
 
-    // Input matrix elements
+  
     printf("Enter the matrix elements:\n");
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
